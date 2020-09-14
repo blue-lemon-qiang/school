@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧校园</title>
+    <!-- 引入 iView css -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/styles/iview.css" rel="stylesheet">
+    <!-- 引入 time组件 css -->
+    <!-- <link rel="stylesheet" href="./css/time.css"> -->
+    <!-- 引入 通用 css -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 引入 当前页面 css -->
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <dv-full-screen-container>
+            <row>
+                <i-col span="8">
+                    <dv-decoration-8 style="height: 8vh;" />
+                </i-col>
+                <i-col span="8">
+                    <row>
+                        <i-col span="24">
+                            <h1 style="text-align: center; color: honeydew; position: relative; top: 15px;">智慧校园可视化</h1>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <dv-decoration-5 style="height: 6vh;" />
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="8">
+                    <dv-decoration-8 :reverse="true" style="height: 8vh;" />
+                </i-col>
+            </row>
+            <row>
+                <i-col span="6">
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-12 style="height: 30vh;" @click.native="department">
+                                <dv-decoration-7 style="height:5vh;color: turquoise; font-size: 20px;">院系信息
+                                </dv-decoration-7>
+                                <div id="college" style="height: 23vh;"></div>
+                            </dv-border-box-12>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-12 style="height: 30vh;" @click.native="teachers">
+                                <dv-decoration-7 style="height:5vh;color: turquoise; font-size: 20px;">师资信息
+                                </dv-decoration-7>
+                                <div id="teacher" style="height: 25vh;"></div>
+                            </dv-border-box-12>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-12 class="culture">
+                                <dv-decoration-7 style="height:5vh;color: turquoise; font-size: 20px;">校园荣誉
+                                </dv-decoration-7>
+                                <h6>蒙以养正 学以致用</h6>
+                                <p>2017年，被省委评为省级文明校园标兵</p>
+                                <p>2015年，被省委评为黑龙江省文明单位</p>
+                                <p>2013年，被评为黑龙江省高校系统文明校园标兵</p>
+                                <p>2011年，被评为二0一0年度义务劳动工作先进单位</p>
+                                <p>2011年，被评为省委高校系统先进基层党组织</p>
+                            </dv-border-box-12>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="12">
+                    <row>
+                        <i-col span="24">
+                            <div class="out">
+                                <div class="text_0" >占地面积：<br>60万平方米</div>
+                                <div class="text_1" >创建时间：<br>1992年</div>
+                                <div class="text_2" >学校人数：<br>10000</div>
+                            </div>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <div style="height: 50vh;">
+                                <div style="position: relative;height: 100%">
+                                    <video width="100%" src="./video/video_introduce.mp4"
+                                        style="position: absolute;height: 50vh;top:50%;margin-top:-25vh;left: 50%;margin-left: -50%;"
+                                        autoplay muted loop></video>
+                                </div>
+                            </div>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="8">
+                            <div class="library">
+                                <div style="margin-top: 15px;">
+                                    <p>借出书籍数量</p>
+                                    <dv-digital-flop :config="BookOut" />
+                                </div>
+                                <div>
+                                    <dv-decoration-2 style="width:200px;height:3vh;" />
+                                </div>
+                                <div style="height: 10vh;">
+                                    <div class="library-in">
+                                        <p>今日借出</p>
+                                        <dv-digital-flop :config="todayBookOut" />
+                                    </div>
+                                    <div class="library-in">
+                                        <p>本月借出</p>
+                                        <dv-digital-flop :config="monthBookOut" />
+                                    </div>
+                                </div>
+                            </div>
+                        </i-col>
+                        <i-col span="8">
+                            <div class="library">
+                                <p style="margin-top: 15px;">图书馆藏书种类</p>
+                                <dv-active-ring-chart :config="optionCircle" style="height:15vh" />
+                            </div>
+                        </i-col>
+                        <i-col span="8">
+                            <div class="library">
+                                <div style="margin-top: 15px;">
+                                    <p>还入书籍数量</p>
+                                    <dv-digital-flop :config="BookIn" />
+                                </div>
+                                <div>
+                                    <dv-decoration-2 style="width:200px;height:2vh;" />
+                                </div>
+                                <div style="height: 10vh;">
+                                    <div class="library-in">
+                                        <p>今日还入</p>
+                                        <dv-digital-flop :config="todayBookIn" />
+                                    </div>
+                                    <div class="library-in">
+                                        <p>本月还入</p>
+                                        <dv-digital-flop :config="monthBookIn" />
+                                    </div>
+                                </div>
+                            </div>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="6">
+                    <row>
+                        <i-col span="24">
+                            <div class="recruitStudent" @click="Student">
+                                <dv-charts :option="option1" />
+                            </div>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <div class="getJob" style="height: 45vh;" @click="job">
+                                <dv-charts :option="option2" />
+                            </div>
+                        </i-col>
+                    </row>
+                </i-col>
+            </row>
+        </dv-full-screen-container>
+    </div>
+    <!-- 引入 Vue js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <!-- 引入 iView js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/iview.min.js"></script>
+    <!-- 引入 axios js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- 引入 Vue dataV js  -->
+    <!-- <script src="https://unpkg.com/@jiaminghi/data-view/dist/datav.min.vue.js"></script> -->
+    <script src="./lib/DataV/datav.min.vue.js"></script>
+
+    <!-- 引入 moment js -->
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.26.0/moment.min.js"></script> -->
+    <!-- 引入 time组件 js -->
+    <!-- <script src="./js/time.js"></script> -->
+    <!-- 引入echarts库 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>
+    <!-- 引入 当前页面 js -->
+    <script src="./js/index.js"></script>
+</body>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('teacher'));
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        legend: {
+            data: ['助教', '讲师', '副教授', '教授', '博士生导师'],
+            orient: 'vertical',
+            left: 'left',
+            textStyle: {
+                color: '#FFF'
+            }
+        },
+
+        series: [
+            {
+                name: '师资',
+                type: 'funnel',
+                color: ['#628ce2','#0dc8ec', '#62e2e0', '#8ae262', '#ead48b'],
+                left: '10%',
+                top: 60,
+                //x2: 80,
+                bottom: 60,
+                width: '80%',
+                // height: {totalHeight} - y - y2,
+                min: 0,
+                max: 100,
+                minSize: '0%',
+                maxSize: '100%',
+                sort: 'ascending',
+                gap: 2,
+                label: {
+                    show: true,
+                    position: 'inside'
+                },
+                labelLine: {
+                    length: 10,
+                    lineStyle: {
+                        width: 1,
+                        type: 'solid'
+                    }
+                },
+                itemStyle: {
+                    borderColor: '#fff',
+                    borderWidth: 1
+                },
+                emphasis: {
+                    label: {
+                        fontSize: 20
+                    }
+                },
+                data: [
+                    { value: 100, name: '助教' },
+                    { value: 80, name: '讲师' },
+                    { value: 60, name: '副教授' },
+                    { value: 40, name: '教授' },
+                    { value: 20, name: '博士生导师' }
+                ]
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    // 基于准备好的dom，初始化echarts实例
+    var myChart1 = echarts.init(document.getElementById('college'));
+    var option1 = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['新闻学', '旅游管理', '艺术设计', '建筑学', '国际经济与贸易'],
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        series: [
+            {
+                name: '院系',
+                type: 'pie',
+                color: ['#0dc8ec', '#62e2e0', '#8ae262', '#ead48b', '#628ce2'],
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [
+                    { value: 335, name: '新闻学' },
+                    { value: 310, name: '旅游管理' },
+                    { value: 234, name: '艺术设计' },
+                    { value: 135, name: '建筑学' },
+                    { value: 1548, name: '国际经济与贸易' }
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option1);
+</script>
+
+</html>

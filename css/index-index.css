@@ -1,0 +1,73 @@
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: #282c34;
+    background-image: url(../img/background.png);
+    background-size:100% 100%;
+}
+.border-box-content {
+    color: #09e0e9;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 24px;
+}
+.culture{
+    height: 30vh !important;
+}
+.culture h6{
+    text-align: center;
+    color: white; 
+    font-size: 25px; 
+    font-family: '华文行楷';
+}
+.culture p{
+    height: 3vh;
+    text-align: center;
+    font-size: 15px;
+}
+.dv-border-box-2{
+    height: 15vh !important;
+}
+.dv-border-box-2 out{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+/* .dv-border-box-2 .in{
+    position: absolute;
+    width: 80vw;
+    height: 100%;
+    top: 50%;
+} */
+.dv-border-box-2 .text{
+    float: left;
+    margin-left: 2.5%;
+    font-size: 20px;
+    text-align: center;
+    width: 30%;
+    left: 35%;
+}
+.library{
+    height: 23vh;
+    border: 1px solid #2e6099;
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+}
+.library p{
+    font-size: 18px;
+    color: #fff;
+}
+.dv-digital-flop{
+    padding: 0;
+    margin: 0;
+    height: 4vh;
+}
+.library .library-in{
+    float: left;
+    width: 50%;
+}

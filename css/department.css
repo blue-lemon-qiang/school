@@ -1,0 +1,54 @@
+.border-box-content {
+    color: #09e0e9;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    padding: 24px;
+}
+.title{
+    height: 45vh;
+    width: 32vw;
+    margin: auto;
+    position: relative; 
+}
+.title-common{
+    height: 8vh; 
+    width: 10vw;
+    position: absolute;
+    border: 2px rgb(255, 255, 255) dashed;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    /* 多行文字上下居中 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title-1{
+    background-color: rgb(70, 130, 180,0.5);
+    top: 10vh;
+}
+.title-2{
+    background-color: rgb(216, 191, 216,0.5);
+    top: 10vh;
+    left: 11vw;
+}
+.title-3{
+    background-color: rgb(255, 99, 71,0.5);
+    top: 10vh;
+    left: 22vw;
+}
+.title-4{
+    background-color: rgb(255, 255, 0,0.5);
+    top: 26vh;
+    left: 4vw;
+}
+.title-5{
+    background-color: rgb(240, 255, 255,0.5);
+    top: 26vh;
+    left: 18vw;
+}
+.border-box-content h3{
+    text-align: left; 
+    margin-left: 30px;
+}

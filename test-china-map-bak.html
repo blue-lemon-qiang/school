@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>china-map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+        html,
+        body,
+        #main {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>
+    <script src="./lib/Echarts/map/js/china.js"></script>
+    <script type="text/javascript">
+        function randomValue() {
+            return Math.round(Math.random() * 1000);
+        }
+        var dataList = [
+            { name: "南海诸岛", value: 0 },
+            { name: '北京', value: randomValue() },
+            { name: '天津', value: randomValue() },
+            { name: '上海', value: randomValue() },
+            { name: '重庆', value: randomValue() },
+            { name: '河北', value: randomValue() },
+            { name: '河南', value: randomValue() },
+            { name: '云南', value: randomValue() },
+            { name: '辽宁', value: randomValue() },
+            { name: '黑龙江', value: randomValue() },
+            { name: '湖南', value: randomValue() },
+            { name: '安徽', value: randomValue() },
+            { name: '山东', value: randomValue() },
+            { name: '新疆', value: randomValue() },
+            { name: '江苏', value: randomValue() },
+            { name: '浙江', value: randomValue() },
+            { name: '江西', value: randomValue() },
+            { name: '湖北', value: randomValue() },
+            { name: '广西', value: randomValue() },
+            { name: '甘肃', value: randomValue() },
+            { name: '山西', value: randomValue() },
+            { name: '内蒙古', value: randomValue() },
+            { name: '陕西', value: randomValue() },
+            { name: '吉林', value: randomValue() },
+            { name: '福建', value: randomValue() },
+            { name: '贵州', value: randomValue() },
+            { name: '广东', value: randomValue() },
+            { name: '青海', value: randomValue() },
+            { name: '西藏', value: randomValue() },
+            { name: '四川', value: randomValue() },
+            { name: '宁夏', value: randomValue() },
+            { name: '海南', value: randomValue() },
+            { name: '台湾', value: randomValue() },
+            { name: '香港', value: randomValue() },
+            { name: '澳门', value: randomValue() }
+        ]
+        var myChart = echarts.init(document.getElementById('main'));
+        var option = {
+            tooltip: {
+                formatter: function (params, ticket, callback) {
+                    return params.seriesName + '<br />' + params.name + '：' + params.value
+                }//数据格式化
+            },
+            visualMap: {
+                min: 0,
+                max: 1500,
+                left: 'left',
+                top: 'bottom',
+                text: ['高', '低'],//取值范围的文字
+                inRange: {
+                    color: ['#e0ffff', '#006edd']//取值范围的颜色
+                },
+                show: true//图注
+            },
+            geo: {
+                map: 'china',
+                label: {
+                    normal: {
+                        show: true,
+                        fontSize: '10',
+                        color: 'rgba(0,0,0,0.7)'
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        borderColor: 'rgba(0, 0, 0, 0.2)'
+                    },
+                    emphasis: {
+                        areaColor: '#F3B329',//鼠标选择区域颜色
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 0,
+                        shadowBlur: 20,
+                        borderWidth: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            series: [
+                {
+                    name: '信息量',
+                    type: 'map',
+                    geoIndex: 0,
+                    data: dataList
+                }
+            ]
+        };
+        myChart.setOption(option);
+        //myChart.setOption(buildOpt())
+        myChart.on('click', function (params) {
+            alert(params.name + ':' + params.value);
+            console.log(params)
+        });
+        // setInterval(function () {
+        //     for (var i in dataList) {
+        //         dataList[i].value = randomValue()
+        //     }
+        //     myChart.setOption({
+        //         series: [
+        //             {
+        //                 name: '信息量',
+        //                 type: 'map',
+        //                 geoIndex: 0,
+        //                 data: dataList
+        //             }
+        //         ]
+        //     });
+        // }, 1000)
+        function buildOpt() {
+            var centerCoord = [130.9688, 46.768]
+            var chinaGeoCoordMap = {
+                '东方学院': [130.9688, 46.768],
+                '黑龙江': [127.9688, 45.368],
+                '内蒙古': [110.3467, 41.4899],
+                '吉林': [125.8154, 44.2584],
+                '北京': [116.4551, 40.2539],
+                '辽宁': [123.1238, 42.1216],
+                '河北': [114.4995, 38.1006],
+                '天津': [117.4219, 39.4189],
+                '山西': [112.3352, 37.9413],
+                '陕西': [109.1162, 34.2004],
+                '甘肃': [103.5901, 36.3043],
+                '宁夏': [106.3586, 38.1775],
+                '青海': [101.4038, 36.8207],
+                '新疆': [87.9236, 43.5883],
+                '西藏': [91.11, 29.97],
+                '四川': [103.9526, 30.7617],
+                '重庆': [108.384366, 30.439702],
+                '山东': [117.1582, 36.8701],
+                '河南': [113.4668, 34.6234],
+                '江苏': [118.8062, 31.9208],
+                '安徽': [117.29, 32.0581],
+                '湖北': [114.3896, 30.6628],
+                '浙江': [119.5313, 29.8773],
+                '福建': [119.4543, 25.9222],
+                '江西': [116.0046, 28.6633],
+                '湖南': [113.0823, 28.2568],
+                '贵州': [106.6992, 26.7682],
+                '云南': [102.9199, 25.4663],
+                '广东': [113.12244, 23.009505],
+                '广西': [108.479, 23.1152],
+                '海南': [110.3893, 19.8516],
+                '上海': [121.4648, 31.2891]
+            };
+            function findMax(list) {
+                var max = 0
+                list.forEach(function (item) {
+
+                })
+                return max
+            }
+            var chinaDatas = [
+                [{ name: '黑龙江', value: 800 }],
+                [{ name: '北京', value: 10 }],
+                [{ name: '内蒙古', value: 0 }],
+                [{ name: '吉林', value: 0 }],
+                [{ name: '辽宁', value: 60 }],
+                [{ name: '河北', value: 0 }],
+                [{ name: '天津', value: 80 }],
+                [{ name: '山西', value: 0 }],
+                [{ name: '陕西', value: 0 }],
+                [{ name: '甘肃', value: 0 }],
+                [{ name: '宁夏', value: 0 }],
+                [{ name: '青海', value: 0 }],
+                [{ name: '新疆', value: 20 }],
+                [{ name: '西藏', value: 0 }],
+                [{ name: '四川', value: 0 }],
+                [{ name: '重庆', value: 0 }],
+                [{ name: '山东', value: 0 }],
+                [{ name: '河南', value: 0 }],
+                [{ name: '江苏', value: 0 }],
+                [{ name: '安徽', value: 0 }],
+                [{ name: '湖北', value: 0 }],
+                [{ name: '浙江', value: 0 }],
+                [{ name: '福建', value: 0 }],
+                [{ name: '江西', value: 0 }],
+                [{ name: '湖南', value: 0 }],
+                [{ name: '贵州', value: 0 }],
+                [{ name: '广西', value: 0 }],
+                [{ name: '海南', value: 0 }],
+                [{ name: '上海', value: 2 }]
+            ];
+            function convertData(data) {
+                var res = [];
+                for (var i = 0; i < data.length; i++) {
+                    var dataItem = data[i];
+                    var fromCoord = chinaGeoCoordMap[dataItem[0].name];
+                    var toCoord = chinaGeoCoordMap.东方学院;//中心点地理坐标
+                    if (fromCoord && toCoord && dataItem[0].value) {
+                        res.push([
+                            { coord: fromCoord, value: dataItem[0].value },
+                            { coord: toCoord, }
+                        ]);
+                    }
+                }
+                return res;
+            };
+            var series = [];
+            [['东方学院', chinaDatas]].forEach(function (item, i) {
+                series.push(
+                    {
+                        type: 'lines',
+                        zlevel: 2,
+                        effect: {
+                            show: true,
+                            period: 4, //箭头指向速度，值越小速度越快
+                            trailLength: 0.02, //特效尾迹长度[0,1]值越大，尾迹越长重
+                            symbol: 'arrow', //箭头图标
+                            symbolSize: 5, //图标大小
+                        },
+                        lineStyle: {
+                            normal: {
+                                width: 1, //尾迹线条宽度
+                                opacity: 1, //尾迹线条透明度
+                                curveness: .3 //尾迹线条曲直度
+                            }
+                        },
+                        data: convertData(item[1])
+                    },
+                    {
+                        type: 'effectScatter',
+                        coordinateSystem: 'geo',
+                        zlevel: 2,
+                        rippleEffect: { //涟漪特效
+                            period: 4, //动画时间，值越小速度越快
+                            brushType: 'stroke', //波纹绘制方式 stroke, fill
+                            scale: 4 //波纹圆环最大限制，值越大波纹越大
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'right', //显示位置
+                                offset: [5, 0], //偏移设置
+                                formatter: function (params) {//圆环显示文字
+                                    return params.data.name;
+                                },
+                                fontSize: 13
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        },
+                        symbol: 'circle',
+                        symbolSize: function (val) {
+                            return 5 + val[2] / 1000; //圆环大小
+                        },
+                        itemStyle: {
+                            normal: {
+                                show: false,
+                                color: '#f00'
+                            }
+                        },
+                        data: item[1].map(function (dataItem) {
+                            return {
+                                //在这里定义你所要展示的数据
+                                name: dataItem[0].name,
+                                value: chinaGeoCoordMap[dataItem[0].name].concat([dataItem[0].value])
+                            };
+                        }),
+                    },
+                    //中心点
+                    {
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        zlevel: 2,
+                        rippleEffect: {
+                            period: 4,
+                            brushType: 'stroke',
+                            scale: 4
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                //offset:[5, 0],
+                                color: '#0f0',
+                                formatter: '{b}',
+                                textStyle: {
+                                    color: "#0f0"
+                                }
+                            },
+                            emphasis: {
+                                show: true,
+                                color: "#f60"
+                            }
+                        },
+                        symbol: 'pin',
+                        symbolSize: 50,
+                        data: [{
+                            name: item[0],
+                            value: chinaGeoCoordMap[item[0]].concat([10]),
+                        }],
+                    }
+                );
+            });
+            var option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function (params, ticket, callback) {
+                        //根据业务自己拓展要显示的内容
+                        var res = "";
+                        var name = params.name;
+                        var value = params.value[params.seriesIndex + 1];
+                        res = "<span style='color:#fff;'>" + name + "</span><br/>数据：" + value;
+                        return res;
+                    }
+                },
+                backgroundColor: "#013954",
+                visualMap: { //图例值控制
+                    min: 0,
+                    max: 1500,
+                    calculable: true,
+                    show: true,
+                    color: ['#f44336', '#fc9700', '#ffde00', '#ffde00', '#00eaff'],
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                geo: {
+                    map: 'china',
+                    label: {
+                        emphasis: {
+                            show: false
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: 'rgba(51, 69, 89, .5)', //地图背景色
+                            borderColor: '#516a89', //省市边界线00fcff 516a89
+                            borderWidth: 1
+                        },
+                        emphasis: {
+                            color: 'rgba(37, 43, 61, .5)' //悬浮背景
+                        }
+                    }
+                },
+                series: series
+            };
+            return option;
+        }
+    </script>
+</body>
+
+</html>

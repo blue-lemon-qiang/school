@@ -1,0 +1,13 @@
+.z-date-time-box > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.z-date-time-box .time {
+    font-size: 3em;
+    margin-right: 5px;
+}
+
+.z-date-time-box .date {
+    text-align: center;
+}

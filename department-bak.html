@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>院系信息</title>
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+    <!-- 引入 iView css -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/styles/iview.css" rel="stylesheet">
+    <!-- 引入 z-datav-head 组件 css -->
+    <link rel="stylesheet" href="./component/z-datav-head/css/main.css">
+    <!-- 引入 通用 css -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 引入 当前页面 css -->
+    <link rel="stylesheet" href="./css/department.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <dv-full-screen-container>
+            <z-datav-head title="院系信息"></z-datav-head>
+            <row>
+                <i-col span="8">
+                    <div class="nav_box">
+                        <dv-border-box-6 :color="border_corlor">
+                            <i-select v-model="model11" filterable class="a">
+                                <i-option v-for="item in cityList" :value="item.value" :key="item.value" class="b">
+                                    {{ item.label }}
+                                </i-option>
+                            </i-select>
+                        </dv-border-box-6>
+                    </div>
+                </i-col>
+                <i-col span="8">
+                    <div class="nav_box">
+                        <dv-border-box-6 :color="border_corlor">
+                            <i-select v-model="model11" filterable>
+                                <i-option v-for="item in cityList" :value="item.value" :key="item.value">
+                                    {{ item.label }}
+                                </i-option>
+                            </i-select>
+                        </dv-border-box-6>
+                    </div>
+                </i-col>
+                <i-col span="8">
+                    <div class="nav_box">
+                        <dv-border-box-6 :color="border_corlor">dv-border-box-6</dv-border-box-6>
+                    </div>
+                </i-col>
+            </row>
+            <row>
+                <i-col span="6">
+                    <div class="left">
+                        <dv-border-box-12>
+                            该放点啥
+                        </dv-border-box-12>
+                    </div>
+                    <div class="left">
+                        <dv-border-box-12>
+                            该放点啥
+                        </dv-border-box-12>
+                    </div>
+                    <div class="left">
+                        <dv-border-box-12>
+                            该放点啥
+                        </dv-border-box-12>
+                    </div>
+                    <dv-border-box-2 :color="border_corlor" @click.native="goBack" style="text-align: center;">
+                        返回
+                    </dv-border-box-2>
+                </i-col>
+                <i-col span="18">
+                    <div class="content_box">
+                        <dv-border-box-13>
+                            该放点啥
+                        </dv-border-box-13>
+                    </div>
+                </i-col>
+            </row>
+        </dv-full-screen-container>
+    </div>
+    <!-- 引入 公司版权信息 js -->
+    <script src="./js/sdzh-copyright.js"></script>
+    <!-- 引入 Vue js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <!-- 引入 iView js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/iview.min.js"></script>
+    <!-- 引入 axios js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- 引入 Vue dataV js  -->
+    <!-- <script src="https://unpkg.com/@jiaminghi/data-view/dist/datav.min.vue.js"></script> -->
+    <script src="./lib/DataV/datav.min.vue.js"></script>
+    <!-- 引入 z-datav-head 组件 js -->
+    <script src="./component/z-datav-head/js/main.js"></script>
+    <!-- 引入 通用 js -->
+    <script src="./js/common.js"></script>
+    <!-- 引入 当前页面 js -->
+    <script src="./js/department.js"></script>
+</body>
+
+</html>

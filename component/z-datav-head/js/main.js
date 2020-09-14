@@ -1,0 +1,25 @@
+Vue.component('z-datav-head', {
+    template: '<template>'
+        + '<row>'
+        + '    <i-col span="8">'
+        + '        <dv-decoration-8 class="z-datav-head-side-height"/>'
+        + '    </i-col>'
+        + '    <i-col span="8">'
+        + '        <row>'
+        + '            <i-col span="24">'
+        + '                <h1 class="z-datav-head-title">{{ title }}</h1>'
+        + '            </i-col>'
+        + '        </row>'
+        + '        <row>'
+        + '            <i-col span="24">'
+        + '                <dv-decoration-5 class="z-datav-head-title-bottom" />'
+        + '            </i-col>'
+        + '        </row>'
+        + '    </i-col>'
+        + '    <i-col span="8">'
+        + '        <dv-decoration-8 :reverse="true" class="z-datav-head-side-height"/>'
+        + '    </i-col>'
+        + '</row>'
+        + '</template>',
+    props: ['title']
+})

@@ -1,0 +1,27 @@
+.z-datav-nav-box {
+    height: 100%;
+}
+
+.z-datav-nav-box .border-box-content {
+    padding: 5px 1%;
+}
+
+div.z-datav-nav-btn {
+    height: 42px;
+    margin: auto 1%;
+    display: inline-block;
+}
+
+.z-datav-nav-box .z-datav-nav-btn .border-box-content {
+    padding: 5px 15px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 32px;
+}
+
+.z-datav-nav-clickable:hover {
+    cursor: pointer;
+    background-color: rgba(124, 231, 253, .5);
+}

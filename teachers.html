@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>师资力量</title>
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+    <!-- 引入 iView css -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/styles/iview.css" rel="stylesheet">
+    <!-- 引入 z-datav-head 组件 css -->
+    <link rel="stylesheet" href="./component/z-datav-head/css/main.css">
+    <!-- 引入 z-datav-nav 组件 css -->
+    <link rel="stylesheet" href="./component/z-datav-nav/css/main.css">
+    <!-- 引入 通用 css -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 引入 当前页面 css -->
+    <link rel="stylesheet" href="./css/teachers.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <dv-full-screen-container>
+            <z-datav-head title="师资力量"></z-datav-head>
+            <row>
+                <i-col span="6">
+                    <row>
+                        <i-col span="24">
+                            <div class="side">
+                                <dv-border-box-12>
+                                    <dv-charts :option="option_l1" />
+                                </dv-border-box-12>
+                            </div>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <div class="side">
+                                <dv-border-box-12>
+                                    <row>
+                                        <i-col span="24">
+                                            <dv-decoration-11 style="height:60px;">教师变动情况</dv-decoration-11>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="8">
+                                            总人数：
+                                            <dv-digital-flop :config="data_l2[0]" class="l2-flop" />
+                                        </i-col>
+                                        <i-col span="8">
+                                            专职教师：
+                                            <dv-digital-flop :config="data_l2[1]" class="l2-flop" />
+                                        </i-col>
+                                        <i-col span="8">
+                                            流动教师：
+                                            <dv-digital-flop :config="data_l2[2]" class="l2-flop" />
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="8">
+                                            教职工新增：
+                                            <dv-digital-flop :config="data_l2[3]" class="l2-flop" />
+                                        </i-col>
+                                        <i-col span="8">
+                                            教职工减少：
+                                            <dv-digital-flop :config="data_l2[4]" class="l2-flop" />
+                                        </i-col>
+                                        <i-col span="8">
+                                            编制异动：
+                                            <dv-digital-flop :config="data_l2[5]" class="l2-flop" />
+                                        </i-col>
+                                    </row>
+                                </dv-border-box-12>
+                            </div>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <div class="side">
+                                <dv-border-box-12>
+                                    <row>
+                                        <i-col span="24">
+                                            <dv-decoration-7>教师编制类别</dv-decoration-7>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="24">
+                                            <dv-capsule-chart :config="config_l3" />
+                                        </i-col>
+                                    </row>
+                                </dv-border-box-12>
+                            </div>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="12">
+                    <row>
+                        <i-col span="24">
+                            <div class="carousel_box">
+                                <dv-border-box-13>
+                                    <div class="carousel-position-outer">
+                                        <div class="carousel-position-inner">
+                                            <carousel :autoplay="carousel_autoplay" trigger="hover"
+                                                autoplay-speed="5000" v-model="carousel_index"
+                                                @on-click="click_carousel">
+                                                <carousel-item v-for="item in data_c">
+                                                    <div class="carousel_item_box">
+                                                        <dv-border-box-2 :color="border_corlor" class="clickable">
+                                                            <row>
+                                                                <i-col span="12">
+                                                                    <row>
+                                                                        <i-col span="24">
+                                                                            <div class="photo_box">
+                                                                                <dv-border-box-2 class="tag">
+                                                                                    <img :src="item.img" alt=""
+                                                                                        class="photo" />
+                                                                                </dv-border-box-2>
+                                                                            </div>
+                                                                        </i-col>
+                                                                    </row>
+                                                                    <row>
+                                                                        <i-col span="24">
+                                                                            <row>
+                                                                                <i-col span="12">
+                                                                                    <dv-border-box-7 class="tag">
+                                                                                        <dv-decoration-11
+                                                                                            style="height:48px;">
+                                                                                            姓名：{{ item.name }}
+                                                                                        </dv-decoration-11>
+                                                                                        <dv-decoration-11
+                                                                                            style="height:48px;">
+                                                                                            职称：{{ item.position }}
+                                                                                        </dv-decoration-11>
+                                                                                    </dv-border-box-7>
+                                                                                </i-col>
+                                                                                <i-col span="12">
+                                                                                    <dv-border-box-6 class="tag">
+                                                                                        <dv-charts
+                                                                                            :option="item.radar_option"
+                                                                                            style="height: 20vh;" />
+                                                                                    </dv-border-box-6>
+                                                                                </i-col>
+                                                                            </row>
+                                                                        </i-col>
+                                                                    </row>
+                                                                </i-col>
+                                                                <i-col span="12">
+                                                                    <dv-border-box-8 class="tag">
+                                                                        荣获奖项列表
+                                                                        <template v-if="6 >= item.prizes.length">
+                                                                            <template v-for="prize in item.prizes">
+                                                                                <dv-decoration-11 class="prize-item">
+                                                                                    <P>{{ prize }}</P>
+                                                                                </dv-decoration-11>
+                                                                            </template>
+                                                                        </template>
+                                                                        <template v-else>
+                                                                            <template v-for="i in 5">
+                                                                                <dv-decoration-11 class="prize-item">
+                                                                                    <p>{{ item.prizes[i - 1] }}</p>
+                                                                                </dv-decoration-11>
+                                                                            </template>
+                                                                            <dv-decoration-11 class="prize-item">
+                                                                                <p>...</p>
+                                                                            </dv-decoration-11>
+                                                                        </template>
+                                                                    </dv-border-box-8>
+                                                                </i-col>
+                                                            </row>
+                                                            <!-- <span style="color: red;">怎么布局啊</span> -->
+                                                        </dv-border-box-2>
+                                                    </div>
+                                                </carousel-item>
+                                            </carousel>
+                                        </div>
+                                    </div>
+                                </dv-border-box-13>
+                                <Modal v-model="current_modal" :title="'当前教师：'+data_c[carousel_index].name"
+                                    @on-cancel="current_modal_cancel" :mask-closable="false" footer-hide>
+                                    <span style="color: red;">怎么布局啊</span>
+                                    <div v-html="data_c[carousel_index].info"></div>
+                                    ##可拿到当前教授的数据##{{ data_c[carousel_index] }}
+                                    <p>段落1</p>
+                                    <p>段落2</p>
+                                    <p>段落3</p>
+                                </Modal>
+                            </div>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="12">
+                            <dv-decoration-7 style="color: #09e0e9;font-weight: bold;">教师男女比例</dv-decoration-7>
+                        </i-col>
+                        <i-col span="8" offset="4">
+                            <dv-decoration-3 style="height:30px;" />
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <div style="height: 20vh;">
+                                <row>
+                                    <i-col span="12">
+                                        <v-chart theme="macarons" :options="option_bl" style="height: 20vh;" />
+                                    </i-col>
+                                    <i-col span="12">
+                                        <!-- <span style="color: red;">此处需要再放点什么东西啊</span> -->
+                                        <img src="./img/TIM截图20200706155904.png" alt=""
+                                            style="max-width: 100%;max-height: 20vh;border-radius: 15px;">
+                                    </i-col>
+                                </row>
+                            </div>
+                        </i-col>
+                    </row>
+                    <!-- <row>
+                        <i-col span="8">
+                            <dv-decoration-3 style="height:30px;" />
+                        </i-col>
+                        <i-col span="4" offset="12">
+                            <dv-border-box-2 :color="border_corlor" @click.native="goBack" class="clickable" style="text-align: center;">
+                                返回
+                            </dv-border-box-2>
+                        </i-col>
+                    </row> -->
+                    <z-datav-nav-school style="height: 6vh;"></z-datav-nav-school>
+                </i-col>
+                <i-col span="6">
+                    <row>
+                        <i-col span="24">
+                            <div class="side">
+                                <dv-border-box-12>
+                                    <dv-charts :option="option_r1" />
+                                </dv-border-box-12>
+                            </div>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <div class="side">
+                                <dv-border-box-12>
+                                    <dv-charts :option="option_r2" />
+                                </dv-border-box-12>
+                            </div>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <div class="side">
+                                <dv-border-box-12>
+                                    <v-chart theme="macarons" :options="option_r3" />
+                                </dv-border-box-12>
+                            </div>
+                        </i-col>
+                    </row>
+                </i-col>
+            </row>
+        </dv-full-screen-container>
+    </div>
+    <!-- 引入 公司版权信息 js -->
+    <script src="./js/sdzh-copyright.js"></script>
+    <!-- 引入 Vue js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <!-- 引入 iView js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/iview.min.js"></script>
+    <!-- 引入 axios js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- 引入 Vue dataV js  -->
+    <!-- <script src="https://unpkg.com/@jiaminghi/data-view/dist/datav.min.vue.js"></script> -->
+    <script src="./lib/DataV/datav.min.vue.js"></script>
+    <!-- 引入 ECharts js  -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>
+    <!-- 引入 ECharts 主题 js  -->
+    <script src="https://echarts-www.cdn.bcebos.com/zh/asset/theme/macarons.js"></script>
+    <!-- 引入 VueECharts js  -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue-echarts/5.0.0-beta.0/vue-echarts.min.js"></script>
+    <!-- 引入 z-datav-head 组件 js -->
+    <script src="./component/z-datav-head/js/main.js"></script>
+    <!-- 引入 z-datav-nav 组件 js -->
+    <script src="./component/z-datav-nav/js/main.js"></script>
+    <!-- 引入 通用 js -->
+    <script src="./js/common.js"></script>
+    <!-- 引入 当前页面 js -->
+    <script src="./js/teachers.js"></script>
+</body>
+
+</html>

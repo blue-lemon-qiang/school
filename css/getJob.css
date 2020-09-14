@@ -1,0 +1,12 @@
+#app{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-size:100% 100%;
+}
+.border-box-content {
+    color: #09e0e9;
+    font-size: 20px;
+    font-weight: bold;
+}

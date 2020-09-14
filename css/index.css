@@ -1,0 +1,102 @@
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: #282c34;
+    background-image: url(../img/background.png);
+    background-size:100% 100%;
+}
+.border-box-content {
+    color: #09e0e9;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 24px;
+}
+.dv-border-box-12:hover{
+    background-color: rgba(219, 47, 210, 0.329);
+    border-radius: 15px;
+}
+.culture{
+    height: 30vh !important;
+}
+.culture h6{
+    text-align: center;
+    color: white; 
+    font-size: 25px; 
+    font-family: '华文行楷';
+}
+.culture p{
+    height: 3vh;
+    text-align: center;
+    font-size: 15px;
+}
+.out{
+    position: relative;
+    width: 50vw;
+    height: 15vh;
+}
+.text_0,.text_1,.text_2{
+    position: absolute;
+    width: 12vw;
+    top: 3vh;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: rgba(56, 221, 213, 0.5);
+}
+.text_0:hover{
+    background-color:rgba(255, 255, 255, 0.3);
+    color:#e2644e
+}
+.text_1{
+    left: 19vw;
+}
+.text_1:hover{
+    background-color:rgba(255, 255, 255, 0.3);
+    color:#e2644e
+}
+.text_2{
+    left: 38vw;
+}
+.text_2:hover{
+    background-color:rgba(255, 255, 255, 0.3);
+    color:#e2644e
+}
+.library{
+    height: 23vh;
+    border: 1px solid #2e6099;
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+}
+.library p{
+    font-size: 18px;
+    color: #fff;
+}
+.dv-digital-flop{
+    padding: 0;
+    margin: 0;
+    height: 4vh;
+}
+.library .library-in{
+    float: left;
+    width: 50%;
+}
+.recruitStudent,.getJob{
+    height: 44vh;
+    padding: 24px;
+    margin: 2px;
+    border: 1px solid rgb(28, 180, 218);
+    border-radius: 20px;
+}
+.recruitStudent:hover{
+    background-color: rgba(219, 47, 210, 0.329);
+}
+.getJob:hover{
+    background-color: rgba(219, 47, 210, 0.329);
+}

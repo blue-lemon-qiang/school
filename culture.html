@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园文化</title>
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+    <!-- 引入 iView css -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/styles/iview.css" rel="stylesheet">
+    <!-- 引入 z-datav-head 组件 css -->
+    <link rel="stylesheet" href="./component/z-datav-head/css/main.css">
+    <!-- 引入 通用 css -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 引入 当前页面 css -->
+    <link rel="stylesheet" href="./css/culture.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <dv-full-screen-container>
+            <z-datav-head title="校园文化"></z-datav-head>
+            <row>
+                <i-col span="16">
+                    <row>
+                        <i-col span="24">
+                            <row>
+                                <i-col span="12">
+                                    <div class="left_top_box">
+                                        <dv-border-box-1>
+                                            dv-border-box-1
+                                        </dv-border-box-1>
+                                    </div>
+                                </i-col>
+                                <i-col span="12">
+                                    <div class="left_top_box">
+                                        <dv-border-box-1>
+                                            dv-border-box-1
+                                        </dv-border-box-1>
+                                    </div>
+                                </i-col>
+                            </row>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <div class="left_bottom_box">
+                                <dv-border-box-1>
+                                    <Timeline pending="true">
+                                        <Timeline-Item color="green">
+                                            <Icon type="ios-trophy" slot="dot"></Icon>
+                                            <span>发布里程碑版本</span>
+                                        </Timeline-Item>
+                                        <Timeline-Item>发布1.0版本</Timeline-Item>
+                                        <Timeline-Item>发布2.0版本</Timeline-Item>
+                                        <Timeline-Item>发布3.0版本</Timeline-Item>
+                                        <Timeline-Item><span>未来可期</span></Timeline-Item>
+                                    </Timeline>
+                                </dv-border-box-1>
+                            </div>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="8">
+                    <row>
+                        <i-col span="24">
+                            <div class="right_box">
+                                <dv-border-box-1>
+                                    dv-border-box-1
+                                </dv-border-box-1>
+                            </div>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <div class="right_box">
+                                <dv-border-box-1>
+                                    dv-border-box-1
+                                </dv-border-box-1>
+                            </div>
+                        </i-col>
+                    </row>
+                </i-col>
+            </row>
+        </dv-full-screen-container>
+    </div>
+    <!-- 引入 公司版权信息 js -->
+    <script src="./js/sdzh-copyright.js"></script>
+    <!-- 引入 Vue js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <!-- 引入 iView js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/iview.min.js"></script>
+    <!-- 引入 axios js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- 引入 Vue dataV js  -->
+    <!-- <script src="https://unpkg.com/@jiaminghi/data-view/dist/datav.min.vue.js"></script> -->
+    <script src="./lib/DataV/datav.min.vue.js"></script>
+    <!-- 引入 z-datav-head 组件 js -->
+    <script src="./component/z-datav-head/js/main.js"></script>
+    <!-- 引入 通用 js -->
+    <script src="./js/common.js"></script>
+    <!-- 引入 当前页面 js -->
+    <script src="./js/culture.js"></script>
+</body>
+
+</html>

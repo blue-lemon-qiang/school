@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <!-- 引入 iView css -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/styles/iview.css" rel="stylesheet">
+    <!-- 引入 z-datav-nav 组件 css -->
+    <link rel="stylesheet" href="./component/z-datav-nav/css/main.css">
+    <!-- 引入 通用 css -->
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+    <div id="app">
+        <dv-full-screen-container>
+            <row>
+                <i-col span="12">
+                    <div >
+                        <z-datav-nav :btns="btns"></z-datav-nav>
+                    </div>
+                </i-col>
+            </row>
+        </dv-full-screen-container>
+    </div>
+    <!-- 引入 Vue js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <!-- 引入 iView js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/iview.min.js"></script>
+    <!-- 引入 Vue dataV js  -->
+    <!-- <script src="https://unpkg.com/@jiaminghi/data-view/dist/datav.min.vue.js"></script> -->
+    <script src="./lib/DataV/datav.min.vue.js"></script>
+    <!-- 引入 z-datav-nav 组件 js -->
+    <script src="./component/z-datav-nav/js/main.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                btns: [
+                    { icon: './img/icon.png', name: 'AAAAA AAAAA AAAAA', url: 'a' },
+                    { icon: './img/icon.png', name: 'BBBB', url: 'b' },
+                    { icon: './img/icon.png', name: 'CCC', url: 'c' },
+                    { icon: './img/icon.png', name: 'DD', url: 'd' },
+                    { name: 'E', url: 'e' },
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

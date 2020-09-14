@@ -1,0 +1,14 @@
+.z-datav-head-side-height {
+    height: 8vh !important;
+}
+
+.z-datav-head-title {
+    text-align: center;
+    color: #09e0e9; 
+    position: relative; 
+    top: 15px;
+}
+
+.z-datav-head-title-bottom {
+    height: 6vh !important;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>院系信息</title>
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+    <!-- 引入 iView css -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/styles/iview.css" rel="stylesheet">
+    <!-- 引入 z-datav-head 组件 css -->
+    <link rel="stylesheet" href="./component/z-datav-head/css/main.css">
+    <!-- 引入 通用 css -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 引入 当前页面 css -->
+    <link rel="stylesheet" href="./css/department.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <dv-full-screen-container>
+            <row>
+                <i-col span="8">
+                    <dv-decoration-8 style="height: 8vh;" />
+                </i-col>
+                <i-col span="8">
+                    <row>
+                        <i-col span="24">
+                            <h1 style="text-align: center; color: honeydew; position: relative; top: 15px;">院系信息</h1>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="24">
+                            <dv-decoration-5 style="height: 6vh;" />
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="8">
+                    <dv-decoration-8 :reverse="true" style="height: 8vh;" />
+                </i-col>
+            </row>
+            <row>
+                <i-col span="8">
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-13 style="height: 45vh;">
+                                <h2>学院专业简介</h2>
+                                <div id="college" style="height: 30vh;"></div>
+                            </dv-border-box-13>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="8">
+                    <row>
+                        <i-col span="24">
+                            <div class="title">
+                                <div class="title-common title-1">管理学院</div>
+                                <div class="title-common title-2">经济贸易学院</div>
+                                <div class="title-common title-3">外国语学院</div>
+                                <div class="title-common title-4">建筑工程学院</div>
+                                <div class="title-common title-5">计算机科学与电气工程学院</div>
+                            </div>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="8">
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-13 style="height: 45vh;">
+                                <h2>学生概况简介</h2>
+                                <dv-scroll-board :config="student" style="height:35vh;" />
+                            </dv-border-box-13>
+                        </i-col>
+                    </row>
+                </i-col>
+            </row>
+            <row>
+                <i-col span="4">
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-4 style="height: 45vh;" :color="['#5b7dc8', '#082232']">
+                                <h3>财务管理</h3>
+                                <dv-capsule-chart :config="profession" style="height:35vh" />
+                            </dv-border-box-4>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="1">
+                    <div style="height: 45vh;"></div>
+                </i-col>
+                <i-col span="4">
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-4 style="height: 45vh;" :color="['#5b7dc8', '#082232']">
+                                <h3>市场营销</h3>
+                                <dv-capsule-chart :config="profession" style="height:35vh" />
+                            </dv-border-box-4>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="1">
+                    <div style="height: 45vh;"></div>
+                </i-col>
+                <i-col span="4">
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-4 style="height: 45vh;" :color="['#5b7dc8', '#082232']">
+                                <h3>电子商务</h3>
+                                <dv-capsule-chart :config="profession" style="height:35vh" />
+                            </dv-border-box-4>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="1">
+                    <div style="height: 45vh;"></div>
+                </i-col>
+                <i-col span="4">
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-4 style="height: 45vh;" :color="['#5b7dc8', '#082232']">
+                                <h3>旅游管理</h3>
+                                <dv-capsule-chart :config="profession" style="height:35vh" />
+                            </dv-border-box-4>
+                        </i-col>
+                    </row>
+                </i-col>
+                <i-col span="1">
+                    <div style="height: 45vh;"></div>
+                </i-col>
+                <i-col span="4">
+                    <row>
+                        <i-col span="24">
+                            <dv-border-box-4 style="height: 45vh;" :color="['#5b7dc8', '#082232']">
+                                <h3>物流管理</h3>
+                                <dv-capsule-chart :config="profession" style="height:35vh" />
+                            </dv-border-box-4>
+                        </i-col>
+                    </row>
+                </i-col>
+            </row>
+        </dv-full-screen-container>
+    </div>
+    <script src="./js/sdzh-information.js"></script>
+    <!-- 引入 Vue js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <!-- 引入 iView js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/iview/3.5.4/iview.min.js"></script>
+    <!-- 引入 axios js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- 引入 Vue dataV js  -->
+    <!-- <script src="https://unpkg.com/@jiaminghi/data-view/dist/datav.min.vue.js"></script> -->
+    <!-- 引入echarts库 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>
+    <script src="./lib/DataV/datav.min.vue.js"></script>
+    <!-- 引入 z-datav-head 组件 js -->
+    <script src="./component/z-datav-head/js/main.js"></script>
+    <!-- 引入 当前页面 js -->
+    <script src="./js/department.js"></script>
+</body>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart1 = echarts.init(document.getElementById('college'));
+    var option1 = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['财务管理', '市场营销', '电子商务', '旅游管理', '物流管理'],
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        series: [
+            {
+                name: '院系',
+                type: 'pie',
+                color: ['#ff9019', '#9653fd', '#fd4264', '#39d9d6', '#118cff'],
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [
+                    { value: 335, name: '财务管理' },
+                    { value: 310, name: '市场营销' },
+                    { value: 234, name: '电子商务' },
+                    { value: 135, name: '旅游管理' },
+                    { value: 1548, name: '物流管理' }
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option1);
+</script>
+
+</html>
